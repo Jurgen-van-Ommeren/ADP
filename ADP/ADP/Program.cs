@@ -1,4 +1,5 @@
-﻿using ADP.ADT_Operations.DynamicArray;
+﻿using ADP.ADT_Operations.Doubly_Linked_Lists;
+using ADP.ADT_Operations.DynamicArray;
 using ADP.ADT_Operations.Stack;
 
 var dynamicArrayTests = new DynamicArrayTests();
@@ -14,3 +15,5 @@ var stackTests = new StackTests();
 
 stackTests.TestStack();
 
+var doubleLinkedListTest = new DoubleLinkedListTest();
+doubleLinkedListTest.Run();

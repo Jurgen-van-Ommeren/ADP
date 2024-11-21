@@ -8,19 +8,20 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\jurge\\.nuget\\packages\\": {}
+    "C:\\Users\\d.dewit\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Development\\ADP\\ADP\\ADP\\ADP.csproj",
+      "projectUniqueName": "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\ADP.csproj",
       "projectName": "ADP",
-      "projectPath": "C:\\Development\\ADP\\ADP\\ADP\\ADP.csproj",
-      "packagesPath": "C:\\Users\\jurge\\.nuget\\packages\\",
-      "outputPath": "C:\\Development\\ADP\\ADP\\ADP\\obj\\",
+      "projectPath": "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\ADP.csproj",
+      "packagesPath": "C:\\Users\\d.dewit\\.nuget\\packages\\",
+      "outputPath": "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\obj\\",
       "projectStyle": "PackageReference",
+      "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
-        "C:\\Users\\jurge\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\d.dewit\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,7 +29,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.pkg.github.com/powerall/index.json": {}
       },
       "frameworks": {
         "net7.0": {
@@ -40,6 +42,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -61,7 +68,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }
