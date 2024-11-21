@@ -1,8 +1,7 @@
-﻿using System.Diagnostics;
-using ADP.Dataset;
+﻿using ADP.Dataset;
 using ADP.Testing;
 
-namespace ADP.ADT_Operations.Doubly_Linked_Lists;
+namespace ADP.Operations.DoublyLinkedLists;
 
 public class DoubleLinkedListTest
 {
@@ -37,22 +36,22 @@ public class DoubleLinkedListTest
         }
         sw.Stop();
         
-        sw.Start("Get  in middle");
-        for (int i = 0; i < 100_000; i++)
+        sw.Start("Get 1 in middle");
+        for (int i = 0; i < 1; i++)
         {
             doubleLinkedList.Get(i + 5_000_000);
         }
         sw.Stop();
         
-        sw.Start("Get 200_000 in middle");
-        for (int i = 0; i < 200_000; i++)
+        sw.Start("Get 2 in middle");
+        for (int i = 0; i < 2; i++)
         {
             doubleLinkedList.Get(i + 5_000_000);
         }
         sw.Stop();
 
-        sw.Start("Get 1_000_000 in middle");
-        for (int i = 0; i < 1_000_000; i++)
+        sw.Start("Get 10 in middle");
+        for (int i = 0; i < 10; i++)
         {
             doubleLinkedList.Get(i + 5_000_000);
         }

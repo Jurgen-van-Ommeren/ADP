@@ -1,4 +1,4 @@
-﻿namespace ADP.ADT_Operations.SinglyLinkedList;
+﻿namespace ADP.Operations.SinglyLinkedList;
 
 public class SinglyListNode <T>
 {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
-using ADP.ADT_Operations.Doubly_Linked_Lists;
 using ADP.Dataset;
+using ADP.Operations.DoublyLinkedLists;
 
 var datasetSorting = JsonSerializer.Deserialize<DatasetSorting>(File.ReadAllText("Dataset/dataset_sorteren.json"));
 

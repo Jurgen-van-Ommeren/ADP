@@ -1,4 +1,4 @@
-﻿namespace ADP.ADT_Operations.Doubly_Linked_Lists;
+﻿namespace ADP.Operations.DoublyLinkedLists;
 
 public class DoubleLinkedList<T>
     where T : IComparable

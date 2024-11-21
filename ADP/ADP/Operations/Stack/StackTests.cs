@@ -1,4 +1,4 @@
-﻿namespace ADP.ADT_Operations.Stack;
+﻿namespace ADP.Operations.Stack;
 
 public class StackTests
 {

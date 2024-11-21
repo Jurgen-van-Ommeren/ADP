@@ -1,6 +1,6 @@
-﻿using ADP.ADT_Operations.SinglyLinkedList;
+﻿using ADP.Operations.SinglyLinkedList;
 
-namespace ADP.ADT_Operations.Stack;
+namespace ADP.Operations.Stack;
 
 public class Stack<T> where T : IComparable<T>
 {

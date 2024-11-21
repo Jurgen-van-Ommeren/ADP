@@ -1,6 +1,4 @@
-﻿using ADP.ADT_Operations.DynamicArray;
-
-namespace ADP.ADT_Operations.DynamicArray;
+﻿namespace ADP.Operations.DynamicArray;
 
 public class DynamicArrayTests
 {

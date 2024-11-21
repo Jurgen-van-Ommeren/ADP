@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace ADP.ADT_Operations.DynamicArray;
+namespace ADP.Operations.DynamicArray;
 
 public class DynamicArray<T> : IEnumerable<T> where T: IComparable<T>
 {
