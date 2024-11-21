@@ -18,5 +18,6 @@ public class ConsoleStopwatch
     public void Stop()
     {
         System.Console.WriteLine($"{_title} took {_stopwatch.ElapsedMilliseconds} ms.");
+        _stopwatch.Stop();
     }
 }

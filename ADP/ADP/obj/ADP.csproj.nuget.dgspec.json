@@ -1,21 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\ADP.csproj": {}
+    "C:\\Development\\ADP\\ADP\\ADP\\ADP.csproj": {}
   },
   "projects": {
-    "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\ADP.csproj": {
+    "C:\\Development\\ADP\\ADP\\ADP\\ADP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\ADP.csproj",
+        "projectUniqueName": "C:\\Development\\ADP\\ADP\\ADP\\ADP.csproj",
         "projectName": "ADP",
-        "projectPath": "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\ADP.csproj",
-        "packagesPath": "C:\\Users\\d.dewit\\.nuget\\packages\\",
-        "outputPath": "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\obj\\",
+        "projectPath": "C:\\Development\\ADP\\ADP\\ADP\\ADP.csproj",
+        "packagesPath": "C:\\Users\\jurge\\.nuget\\packages\\",
+        "outputPath": "C:\\Development\\ADP\\ADP\\ADP\\obj\\",
         "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
-          "C:\\Users\\d.dewit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jurge\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -23,8 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/powerall/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -62,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206\\RuntimeIdentifierGraph.json"
         }
       }
     }
