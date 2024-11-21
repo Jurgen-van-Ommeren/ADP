@@ -8,11 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Operations\Double ended queue\" />
-      <Folder Include="Operations\Doubly Linked Lists\" />
-      <Folder Include="Operations\Dynamic Array\" />
-      <Folder Include="Operations\Priority Queue\" />
-      <Folder Include="Operations\Stack\" />
+      <Folder Include="ADT-Operations\Double ended queue\" />
+      <Folder Include="ADT-Operations\Doubly Linked Lists\" />
+      <Folder Include="ADT-Operations\Dynamic Array\" />
+      <Folder Include="ADT-Operations\Priority Queue\" />
+      <Folder Include="ADT-Operations\Stack\" />
     </ItemGroup>
 
 </Project>
