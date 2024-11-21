@@ -75,6 +75,10 @@ public class DynamicArray<T> : IEnumerable<T> where T: IComparable<T>
             {
                 RemoveItemFromArray(index);
             }
+            else
+            {
+                _items[_size] = default;
+            }
         }
     }
     
