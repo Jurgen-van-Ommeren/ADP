@@ -1,3 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using ADP.ADT_Operations.DynamicArray;
 
-Console.WriteLine("Hello, World!");
+var dynamicArrayTests = new DynamicArrayTests();
+
+// dynamicArrayTests.TestAddFunction();
+// dynamicArrayTests.TestGetFunction();
+// dynamicArrayTests.TestSetFunction();
+// dynamicArrayTests.TestRemoveFunction();
+// dynamicArrayTests.TestRemoveElementFunction();
+// dynamicArrayTests.TestContainsFunction();
+dynamicArrayTests.TestIndexOfFunction();
