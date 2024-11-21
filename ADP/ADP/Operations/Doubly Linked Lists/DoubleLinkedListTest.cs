@@ -1,15 +1,68 @@
-﻿namespace ADP.ADT_Operations.Doubly_Linked_Lists;
+﻿using System.Diagnostics;
+using ADP.Dataset;
+using ADP.Testing;
+
+namespace ADP.ADT_Operations.Doubly_Linked_Lists;
 
 public class DoubleLinkedListTest
 {
-    public void Run()
+    public void Run(DatasetSorting datasetSorting)
     {
-        var doubleLinkedList = new DoubleLinkedList<string>();
+        var sw = new ConsoleStopwatch();
+        
+        var doubleLinkedList = new DoubleLinkedList<int>();
+        
+        sw.Start("Adding 1000000"); 
+        for (int i = 0; i < 1000000; i++)
+        {
+            doubleLinkedList.Add(i);
+        }
+        sw.Stop();
+        
+        doubleLinkedList = new DoubleLinkedList<int>();
+        
+        sw.Start("Adding 2000000"); 
+        for (int i = 0; i < 2000000; i++)
+        {
+            doubleLinkedList.Add(i);
+        }
+        sw.Stop();
+        
+        doubleLinkedList = new DoubleLinkedList<int>();
+        
+        sw.Start("Adding 10000000"); 
+        for (int i = 0; i < 10_000_000; i++)
+        {
+            doubleLinkedList.Add(i);
+        }
+        sw.Stop();
+        
+        sw.Start("Get  in middle");
+        for (int i = 0; i < 100_000; i++)
+        {
+            doubleLinkedList.Get(i + 5_000_000);
+        }
+        sw.Stop();
+        
+        sw.Start("Get 200_000 in middle");
+        for (int i = 0; i < 200_000; i++)
+        {
+            doubleLinkedList.Get(i + 5_000_000);
+        }
+        sw.Stop();
+
+        sw.Start("Get 1_000_000 in middle");
+        for (int i = 0; i < 1_000_000; i++)
+        {
+            doubleLinkedList.Get(i + 5_000_000);
+        }
+        sw.Stop();
+
         // doubleLinkedList.Remove(0);
         // doubleLinkedList.Contains("Een");
         // doubleLinkedList.IndexOf("Een");
         // doubleLinkedList.Set(1, "Twee");
-        
+
 
         // doubleLinkedList.Add("Een");
         // doubleLinkedList.Add("Twee");

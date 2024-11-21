@@ -12,4 +12,16 @@
       <Folder Include="ADT-Operations\Priority Queue\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Dataset\dataset_grafen.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Dataset\dataset_hashing.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Dataset\dataset_sorteren.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
