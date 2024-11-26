@@ -6,7 +6,7 @@ public class DoubleLinkedList<T>
     private DoubleLinkedListNode<T> _firstNode;
     private DoubleLinkedListNode<T> _lastNode;
     
-    private int _count;
+    private int _size;
 
     public void Add(T value)
     {
@@ -25,12 +25,12 @@ public class DoubleLinkedList<T>
             _lastNode = newNode;
         }
 
-        _count++;
+        _size++;
     }
 
     public T Get(int index)
     {
-        if (_count <= index)
+        if (_size <= index)
         {
             throw new IndexOutOfRangeException();
         }
@@ -42,7 +42,7 @@ public class DoubleLinkedList<T>
 
     public void Set(int index, T value)
     {
-        if (index > _count)
+        if (index > _size)
         {
             throw new IndexOutOfRangeException();
         }
@@ -53,7 +53,7 @@ public class DoubleLinkedList<T>
 
     public void Remove(int index)
     {
-        if (_count <= index)
+        if (_size <= index)
         {
             throw new IndexOutOfRangeException();
         }
@@ -102,9 +102,9 @@ public class DoubleLinkedList<T>
 
     private DoubleLinkedListNode<T> GetNode(int index)
     {
-        if (index > _count / 2)
+        if (index > _size / 2)
         {
-            var currentIndex = _count - 1;
+            var currentIndex = _size - 1;
             var currentNode = _lastNode;
 
             while (currentNode != null)
@@ -181,6 +181,6 @@ public class DoubleLinkedList<T>
             _lastNode = node.Prev;
         }
 
-        _count--;
+        _size--;
     }
 }
