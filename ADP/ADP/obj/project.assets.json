@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\jurge\\.nuget\\packages\\": {}
+    "C:\\Users\\dinan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Development\\ADP\\ADP\\ADP\\ADP.csproj",
+      "projectUniqueName": "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\ADP.csproj",
       "projectName": "ADP",
-      "projectPath": "C:\\Development\\ADP\\ADP\\ADP\\ADP.csproj",
-      "packagesPath": "C:\\Users\\jurge\\.nuget\\packages\\",
-      "outputPath": "C:\\Development\\ADP\\ADP\\ADP\\obj\\",
+      "projectPath": "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\ADP.csproj",
+      "packagesPath": "C:\\Users\\dinan\\.nuget\\packages\\",
+      "outputPath": "C:\\Development\\Diwi\\ADP\\ADP\\ADP\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jurge\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dinan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,7 +28,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.myget.org/F/umbracoprereleases/api/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
@@ -40,11 +41,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -61,12 +57,30 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.15, 7.0.15]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.15, 7.0.15]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.15, 7.0.15]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.15, 7.0.15]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
