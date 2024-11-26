@@ -13,7 +13,7 @@ public class Stack<T> where T : IComparable<T>
 
     public void Push(T node)
     {
-        var newNode = new SinglyListNode<T>()
+        var newNode = new SinglyLinkedListNode<T>()
         {
             Node = node,
             Next = _stack.HeadNode.Next

@@ -31,3 +31,6 @@ C:\Development\Diwi\ADP\ADP\ADP\obj\Debug\net7.0\ref\ADP.dll
 C:\Development\Diwi\ADP\ADP\ADP\bin\Debug\net7.0\Dataset\dataset_grafen.json
 C:\Development\Diwi\ADP\ADP\ADP\bin\Debug\net7.0\Dataset\dataset_hashing.json
 C:\Development\Diwi\ADP\ADP\ADP\bin\Debug\net7.0\Dataset\dataset_sorteren.json
+C:\Development\ADP\ADP\ADP\bin\Debug\net7.0\Dataset\dataset_grafen.json
+C:\Development\ADP\ADP\ADP\bin\Debug\net7.0\Dataset\dataset_hashing.json
+C:\Development\ADP\ADP\ADP\bin\Debug\net7.0\Dataset\dataset_sorteren.json
