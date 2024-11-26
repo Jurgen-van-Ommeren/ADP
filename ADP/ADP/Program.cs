@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using ADP.Dataset;
 using ADP.Operations.Deque;
+using ADP.Operations.PriorityQueue;
 
 var datasetSorting = JsonSerializer.Deserialize<DatasetSorting>(File.ReadAllText("Dataset/dataset_sorteren.json"));
 
@@ -20,5 +21,8 @@ var datasetSorting = JsonSerializer.Deserialize<DatasetSorting>(File.ReadAllText
 // var doubleLinkedListTest = new DoubleLinkedListTest();
 // doubleLinkedListTest.Run(datasetSorting);
 
-var dequeTest = new DequeTest();
-dequeTest.Run(datasetSorting);
+// var dequeTest = new DequeTest();
+// dequeTest.Run(datasetSorting);
+
+var priorityQueuTest = new PriorityQueueWithArrayTest();
+priorityQueuTest.Run(datasetSorting);
