@@ -11,7 +11,7 @@ public class Pizza : IComparable<Pizza>
         {
             return 1;
         }
-
+        
         if (Slices < comparingPizza.Slices)
         {
             return -1;

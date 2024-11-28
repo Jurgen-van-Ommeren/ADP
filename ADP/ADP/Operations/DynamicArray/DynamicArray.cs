@@ -86,9 +86,12 @@ public class DynamicArray<T> : IEnumerable<T> where T : IComparable<T>
             if (item.CompareTo(_items[i]) == 0)
             {
                 RemoveItemFromArray(i);
+                _size--;
                 return;
             }
         }
+        
+        throw new IndexOutOfRangeException();
     }
 
     public bool Contains(T item)
@@ -153,12 +156,7 @@ public class DynamicArray<T> : IEnumerable<T> where T : IComparable<T>
         {
             for (var i = 0; i < _size; i++)
             {
-                if (i == index)
-                {
-                    i++;
-                }
-
-                newItems[i] = _items[i];
+                newItems[i] = _items[i + 1];
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using ADP.Dataset;
 using ADP.Testing;
+using ADP.TestObjects;
 
 namespace ADP.Operations.DynamicArray;
 
@@ -8,18 +9,25 @@ public class DynamicArrayTests
     public void Run(DatasetSorting datasetSorting)
     {
         var array = new DynamicArray<float>(8002);
+        var pizzaArray = new DynamicArray<Pizza>(8002);
         
-        //complexity:
+        //complexity: O N, because on resizing it needs to copy the whole array to the new array
         //takes 12883 ticks
         ConsoleStopwatch.Start("adding LijstFloat8001");
-        
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             array.Add(item);
         }
         ConsoleStopwatch.Stop();
         
-        //complexity: 1, because the index directly references to the place where the data is stored.
+        ConsoleStopwatch.Start("adding pizzas");
+        foreach (var item in datasetSorting.Pizzas)
+        {
+            pizzaArray.Add(item);
+        }
+        ConsoleStopwatch.Stop();
+        
+        //complexity: O, because the index directly references to the place where the data is stored.
         //takes 3636 ticks
         ConsoleStopwatch.Start("getting LijstFloat8001");
         for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
@@ -28,7 +36,7 @@ public class DynamicArrayTests
         }
         ConsoleStopwatch.Stop();
         
-        //complexity: 1, because the index directly references to the place where the data will be stored.
+        //complexity: O, because the index directly references to the place where the data will be stored.
         //takes 2761 ticks
         ConsoleStopwatch.Start("setting LijstFloat8001");
         for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
@@ -43,6 +51,13 @@ public class DynamicArrayTests
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             array.Contains(item);
+        }
+        ConsoleStopwatch.Stop();
+        
+        ConsoleStopwatch.Start("containing pizzas");
+        foreach (var item in datasetSorting.Pizzas)
+        {
+            pizzaArray.Contains(item);
         }
         ConsoleStopwatch.Stop();
         
@@ -63,11 +78,23 @@ public class DynamicArrayTests
             array.Remove(item);
         }
         ConsoleStopwatch.Stop();
+        
+        ConsoleStopwatch.Start("removing pizzas");
+        foreach (var item in datasetSorting.Pizzas)
+        {
+            pizzaArray.Remove(item);
+        }
+        ConsoleStopwatch.Stop();
 
+        foreach (var item in datasetSorting.LijstFloat8001)
+        {
+            array.Add(item);
+        }
+        
         //complexity: O N, because there is 1 loop for swiping the array
-        //takes 1319261 ticks
+        //takes 2756 ticks
         ConsoleStopwatch.Start("removing by index LijstFloat8001");
-        for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
+        for (var i = datasetSorting.LijstFloat8001.Length - 1; i > 0; i--)
         {
             array.Remove(i);
         }
