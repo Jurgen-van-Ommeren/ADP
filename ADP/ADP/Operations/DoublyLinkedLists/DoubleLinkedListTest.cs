@@ -194,6 +194,8 @@ public class DoubleLinkedListTest
 
     private void Pizzas(DatasetSorting datasetSorting)
     {
+        //Match pizza on slices, compare logic is implemented in Pizza class.
+        
         var doubleLinkedList = new DoubleLinkedList<Pizza>();
         
         foreach (var pizza in datasetSorting.Pizzas)
@@ -210,6 +212,7 @@ public class DoubleLinkedListTest
         var indexOfPizza = doubleLinkedList.IndexOf(targetPizza);
         Console.WriteLine(indexOfPizza);
         
+        //Writes pizza with 5 slices
         Console.WriteLine(JsonSerializer.Serialize(doubleLinkedList.Get(indexOfPizza)));
         
         doubleLinkedList.Remove(targetPizza);
