@@ -1,4 +1,5 @@
-﻿using ADP.Dataset;
+﻿using System.Diagnostics;
+using ADP.Dataset;
 using ADP.Testing;
 
 namespace ADP.Operations.PriorityQueue;
@@ -7,9 +8,22 @@ public class PriorityQueueWithArrayTest
 {
     public void Run(DatasetSorting datasetSorting)
     {
+        // AddLijstFloat8001(datasetSorting);
+        // Peek(datasetSorting);
+        Poll(datasetSorting);
+    }
+
+    private void AddLijstFloat8001(DatasetSorting datasetSorting)
+    {
+        //In next loops we add three times LijstFloat8001 (without sizing array)
+        //The time is increasing exponential because complexity O(N²)
+        
         var sw = new ConsoleStopwatch();
         
-        var priorityQueueFloat = new PriorityQueueWithArray<float>(24003);
+        var priorityQueueFloat = new PriorityQueueWithArray<float>(datasetSorting.LijstFloat8001.Length * 3);
+        
+        //Warmup
+        priorityQueueFloat.Add(-1);
         
         //Take ~220ms
         sw.Start("Adding LijstFloat8001"); 
@@ -19,7 +33,7 @@ public class PriorityQueueWithArrayTest
         }
         sw.Stop();
         
-        //Take ~640ms
+        //Take ~940ms
         sw.Start("Adding LijstFloat8001"); 
         foreach (var item in datasetSorting.LijstFloat8001)
         {
@@ -27,95 +41,78 @@ public class PriorityQueueWithArrayTest
         }
         sw.Stop();
         
-        //Take ~1640ms
+        //Take ~2000ms
         sw.Start("Adding LijstFloat8001"); 
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             priorityQueueFloat.Add(item);
         }
         sw.Stop();
+    }
+    
+    private void Peek(DatasetSorting datasetSorting)
+    {
+        //In next loops we add three times LijstFloat8001 (without sizing array)
+        //Between loops we do an Peek, the time of Peek is constant because complexity O(1)
         
-        var priorityQueue = new PriorityQueueWithArray<int>();
+        var sw = new ConsoleStopwatch();
         
-        sw.Start("Adding 1_000"); 
-        for (int i = 1_000; i > 0; i--)
-        {
-            priorityQueue.Add(i);
-        }
+        var priorityQueueFloat = new PriorityQueueWithArray<float>(datasetSorting.LijstFloat8001.Length * 3);
+        
+        //Warmup
+        priorityQueueFloat.Peek();
+        
+        foreach (var item in datasetSorting.LijstFloat8001)
+            priorityQueueFloat.Add(item);
+        
+        sw.Start("Peek 8001");
+        priorityQueueFloat.Peek();
         sw.Stop();
         
-        priorityQueue = new PriorityQueueWithArray<int>();
-        
-        sw.Start("Adding 2_000"); 
-        for (int i = 2_000; i > 0; i--)
-        {
-            priorityQueue.Add(i);
-        }
-        sw.Stop();
-        
-        priorityQueue = new PriorityQueueWithArray<int>();
-        
-        sw.Start("Adding 10_000"); 
-        for (int i = 10_000; i > 0; i--)
-        {
-            priorityQueue.Add(i);
-        }
-        sw.Stop();
+        foreach (var item in datasetSorting.LijstFloat8001)
+            priorityQueueFloat.Add(item);
 
-        sw.Start("Peeking 1_000");
-        for (int i = 1_000; i > 0; i--)
-        {
-            var peek = priorityQueue.Peek();
-        }
+        sw.Start("Peek 16002");
+        priorityQueueFloat.Peek();
         sw.Stop();
         
-        sw.Start("Peeking 2_000");
-        for (int i = 2_000; i > 0; i--)
-        {
-            var peek = priorityQueue.Peek();
-        }
-        sw.Stop();
-        
-        sw.Start("Peeking 100_000");
-        for (int i = 100_000; i > 0; i--)
-        {
-            var peek = priorityQueue.Peek();
-        }
-        sw.Stop();
+        foreach (var item in datasetSorting.LijstFloat8001)
+            priorityQueueFloat.Add(item);
 
-        sw.Start("Polling 1_000"); 
-        for (int i = 1_000; i > 0; i--)
-        {
-            priorityQueue.Poll();
-        }
+        sw.Start("Peek 24003");
+        priorityQueueFloat.Peek();
+        sw.Stop();
+    }
+    
+    private void Poll(DatasetSorting datasetSorting)
+    {
+        //In next loops we add three times LijstFloat8001 (without sizing array)
+        //Between loops we do an Poll, the time of Peek is linear because complexity O(N)
+        
+        var priorityQueue = new PriorityQueueWithArray<int>(3_000_000);
+
+        //Warmup
+        priorityQueue.Poll();
+
+        for (int i = 0; i < 1_000_000; i++)
+            priorityQueue.Add(i);
+
+        var sw = ConsoleStopwatch.Start("Poll 1_000_000");
+        priorityQueue.Poll();
         sw.Stop();
         
-        priorityQueue = new PriorityQueueWithArray<int>();
+        for (int i = 1_000_000; i < 2_000_000; i++)
+            priorityQueue.Add(i); 
         
-        for (int i = 10_000; i > 0; i--)
-        {
-            priorityQueue.Add(i);
-        }
-        
-        sw.Start("Polling 2_000"); 
-        for (int i = 2_000; i > 0; i--)
-        {
-            priorityQueue.Poll();
-        }
+        sw.Start("Poll 2_000_000");
+        priorityQueue.Poll();
         sw.Stop();
         
-        priorityQueue = new PriorityQueueWithArray<int>();
+        for (int i = 2_000_000; i < 3_000_000; i++)
+            priorityQueue.Add(i); 
         
-        for (int i = 10_000; i > 0; i--)
-        {
-            priorityQueue.Add(i);
-        }
-        
-        sw.Start("Polling 5_000"); 
-        for (int i = 5_000; i > 0; i--)
-        {
-            priorityQueue.Poll();
-        }
+        sw.Start("Poll 3_000_000");
+        priorityQueue.Poll();
         sw.Stop();
     }
 }

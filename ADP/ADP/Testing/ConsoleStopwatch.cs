@@ -2,22 +2,24 @@
 
 namespace ADP.Testing;
 
-public class ConsoleStopwatch
+public static class ConsoleStopwatch
 {
-    private Stopwatch _stopwatch;
-    private string _title;
+    private static Stopwatch _stopwatch;
+    private static string _title;
     
-    public void Start(string title)
+    public static Stopwatch Start(string title)
     {
         _stopwatch = new Stopwatch();
         _stopwatch.Start();
 
         _title = title;
+
+        return _stopwatch;
     }
 
-    public void Stop()
+    public static void Stop()
     {
-        System.Console.WriteLine($"{_title} took {_stopwatch.ElapsedMilliseconds} ms.");
         _stopwatch.Stop();
+        System.Console.WriteLine($"{_title} took {_stopwatch.ElapsedTicks / 100} ticks.");
     }
 }

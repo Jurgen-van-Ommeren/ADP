@@ -1,4 +1,6 @@
-﻿namespace ADP.Operations.PriorityQueue;
+﻿using ADP.Testing;
+
+namespace ADP.Operations.PriorityQueue;
 
 public class PriorityQueueWithArray<T> where T : IComparable
 {
@@ -54,19 +56,26 @@ public class PriorityQueueWithArray<T> where T : IComparable
     
     public T Poll()
     {
+        var sw = new ConsoleStopwatch();
+        sw.Start($"Poll inside {_size}");
+        
         if (_size == 0)
         {
+            sw.Stop();
+            
             return default;
         }
 
         var value = _items[0];
-
+        
         for (var i = 1; i < _size; i++)
         {
             _items[i - 1] = _items[i];    
         }
         
         _size--;
+        
+        sw.Stop();
 
         return value;
     }
