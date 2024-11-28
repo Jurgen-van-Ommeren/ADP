@@ -18,36 +18,34 @@ public class PriorityQueueWithArrayTest
         //In next loops we add three times LijstFloat8001 (without sizing array)
         //The time is increasing exponential because complexity O(N²)
         
-        var sw = new ConsoleStopwatch();
-        
         var priorityQueueFloat = new PriorityQueueWithArray<float>(datasetSorting.LijstFloat8001.Length * 3);
         
         //Warmup
         priorityQueueFloat.Add(-1);
         
         //Take ~220ms
-        sw.Start("Adding LijstFloat8001"); 
+        ConsoleStopwatch.Start("Adding LijstFloat8001"); 
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             priorityQueueFloat.Add(item);
         }
-        sw.Stop();
+        ConsoleStopwatch.Stop();
         
         //Take ~940ms
-        sw.Start("Adding LijstFloat8001"); 
+        ConsoleStopwatch.Start("Adding LijstFloat8001"); 
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             priorityQueueFloat.Add(item);
         }
-        sw.Stop();
+        ConsoleStopwatch.Stop();
         
         //Take ~2000ms
-        sw.Start("Adding LijstFloat8001"); 
+        ConsoleStopwatch.Start("Adding LijstFloat8001"); 
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             priorityQueueFloat.Add(item);
         }
-        sw.Stop();
+        ConsoleStopwatch.Stop();
     }
     
     private void Peek(DatasetSorting datasetSorting)
@@ -55,8 +53,6 @@ public class PriorityQueueWithArrayTest
         //In next loops we add three times LijstFloat8001 (without sizing array)
         //Between loops we do an Peek, the time of Peek is constant because complexity O(1)
         
-        var sw = new ConsoleStopwatch();
-        
         var priorityQueueFloat = new PriorityQueueWithArray<float>(datasetSorting.LijstFloat8001.Length * 3);
         
         //Warmup
@@ -65,23 +61,23 @@ public class PriorityQueueWithArrayTest
         foreach (var item in datasetSorting.LijstFloat8001)
             priorityQueueFloat.Add(item);
         
-        sw.Start("Peek 8001");
+        ConsoleStopwatch.Start("Peek 8001");
         priorityQueueFloat.Peek();
-        sw.Stop();
+        ConsoleStopwatch.Stop();
         
         foreach (var item in datasetSorting.LijstFloat8001)
             priorityQueueFloat.Add(item);
 
-        sw.Start("Peek 16002");
+        ConsoleStopwatch.Start("Peek 16002");
         priorityQueueFloat.Peek();
-        sw.Stop();
+        ConsoleStopwatch.Stop();
         
         foreach (var item in datasetSorting.LijstFloat8001)
             priorityQueueFloat.Add(item);
 
-        sw.Start("Peek 24003");
+        ConsoleStopwatch.Start("Peek 24003");
         priorityQueueFloat.Peek();
-        sw.Stop();
+        ConsoleStopwatch.Stop();
     }
     
     private void Poll(DatasetSorting datasetSorting)
@@ -97,22 +93,22 @@ public class PriorityQueueWithArrayTest
         for (int i = 0; i < 1_000_000; i++)
             priorityQueue.Add(i);
 
-        var sw = ConsoleStopwatch.Start("Poll 1_000_000");
+        ConsoleStopwatch.Start("Poll 1_000_000");
         priorityQueue.Poll();
-        sw.Stop();
+        ConsoleStopwatch.Stop();
         
         for (int i = 1_000_000; i < 2_000_000; i++)
             priorityQueue.Add(i); 
         
-        sw.Start("Poll 2_000_000");
+        ConsoleStopwatch.Start("Poll 2_000_000");
         priorityQueue.Poll();
-        sw.Stop();
+        ConsoleStopwatch.Stop();
         
         for (int i = 2_000_000; i < 3_000_000; i++)
             priorityQueue.Add(i); 
         
-        sw.Start("Poll 3_000_000");
+        ConsoleStopwatch.Start("Poll 3_000_000");
         priorityQueue.Poll();
-        sw.Stop();
+        ConsoleStopwatch.Stop();
     }
 }

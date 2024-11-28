@@ -7,21 +7,19 @@ public class DynamicArrayTests
 {
     public void Run(DatasetSorting datasetSorting)
     {
-        var sw = new ConsoleStopwatch();
-
         var array = new DynamicArray<float>(8002);
         
         //warmup
         array.Add(1);
         
         //takes 12883 ticks
-        sw.Start("adding LijstFloat8001");
+        ConsoleStopwatch.Start("adding LijstFloat8001");
         
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             array.Add(item);
         }
-        sw.Stop();
+        ConsoleStopwatch.Stop();
         
         
         //create new array
@@ -30,69 +28,69 @@ public class DynamicArrayTests
         //warmup
         array.Add(1);
         
-        sw.Start("adding LijstFloat8001 1 times");
+        ConsoleStopwatch.Start("adding LijstFloat8001 1 times");
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             array.Add(item);
         }
-        sw.Stop();
+        ConsoleStopwatch.Stop();
         
-        sw.Start("adding LijstFloat8001 2 times");
+        ConsoleStopwatch.Start("adding LijstFloat8001 2 times");
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             array.Add(item);
         }
-        sw.Stop();
+        ConsoleStopwatch.Stop();
         
-        sw.Start("adding LijstFloat8001 3 times");
+        ConsoleStopwatch.Start("adding LijstFloat8001 3 times");
         foreach (var item in datasetSorting.LijstFloat8001)
         {
             array.Add(item);
         }
-        sw.Stop();
+        ConsoleStopwatch.Stop();
      
         
         
         // //takes 3636 ticks
-        // sw.Start("getting LijstFloat8001");
+        // ConsoleStopwatch.Start("getting LijstFloat8001");
         // for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
         // {
         //     array.Get(i);
         // }
-        // sw.Stop();
+        // ConsoleStopwatch.Stop();
         //
         // //takes 2761 ticks
-        // sw.Start("setting LijstFloat8001");
+        // ConsoleStopwatch.Start("setting LijstFloat8001");
         // for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
         // {
         //     array.Set(i, datasetSorting.LijstFloat8001[i]);
         // }
-        // sw.Stop();
+        // ConsoleStopwatch.Stop();
         //
         //
         // // takes 16986 ticks
-        // sw.Start("contains LijstFloat8001");
+        // ConsoleStopwatch.Start("contains LijstFloat8001");
         // foreach (var item in datasetSorting.LijstFloat8001)
         // {
         //     array.Contains(item);
         // }
-        // sw.Stop();
+        // ConsoleStopwatch.Stop();
         //
         // // takes 3275
-        // sw.Start("index of LijstFloat8001");
+        // ConsoleStopwatch.Start("index of LijstFloat8001");
         // foreach (var item in datasetSorting.LijstFloat8001)
         // {
         //     array.IndexOf(item);
         // }
-        // sw.Stop();
+        // ConsoleStopwatch.Stop();
         //
         // // takes 2497663 ticks
-        // sw.Start("remove item from LijstFloat8001");
+        // ConsoleStopwatch.Start("remove item from LijstFloat8001");
         // foreach (var item in datasetSorting.LijstFloat8001)
         // {
         //     array.Remove(item);
         // }
-        // sw.Stop();
+        // ConsoleStopwatch.Stop();
         //
         // foreach (var item in datasetSorting.LijstFloat8001)
         // {
@@ -100,12 +98,12 @@ public class DynamicArrayTests
         // }
         //
         // //takes 3423737
-        // sw.Start("removing by index LijstFloat8001");
+        // ConsoleStopwatch.Start("removing by index LijstFloat8001");
         // for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
         // {
         //     array.Remove(i);
         // }
-        // sw.Stop();
+        // ConsoleStopwatch.Stop();
         //
         //
     }

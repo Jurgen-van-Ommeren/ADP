@@ -56,12 +56,11 @@ public class PriorityQueueWithArray<T> where T : IComparable
     
     public T Poll()
     {
-        var sw = new ConsoleStopwatch();
-        sw.Start($"Poll inside {_size}");
+        ConsoleStopwatch.Start($"Poll inside {_size}");
         
         if (_size == 0)
         {
-            sw.Stop();
+            ConsoleStopwatch.Stop();
             
             return default;
         }
@@ -75,7 +74,7 @@ public class PriorityQueueWithArray<T> where T : IComparable
         
         _size--;
         
-        sw.Stop();
+        ConsoleStopwatch.Stop();
 
         return value;
     }
