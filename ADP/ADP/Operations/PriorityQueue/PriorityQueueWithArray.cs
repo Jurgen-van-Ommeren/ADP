@@ -2,7 +2,7 @@
 
 namespace ADP.Operations.PriorityQueue;
 
-public class PriorityQueueWithArray<T> where T : IComparable
+public class PriorityQueueWithArray<T> where T : IComparable<T>
 {
     private T[] _items = new T[0];
     private int _size = 0;

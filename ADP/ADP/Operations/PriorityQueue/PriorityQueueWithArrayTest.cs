@@ -21,6 +21,8 @@ public class PriorityQueueWithArrayTest
         var priorityQueueFloat = new PriorityQueueWithArray<float>(datasetSorting.LijstFloat8001.Length * 3);
         
         //Warmup
+        ConsoleStopwatch.Start("Warmup");
+        ConsoleStopwatch.Stop();
         priorityQueueFloat.Add(-1);
         
         //Take ~220ms
@@ -56,6 +58,8 @@ public class PriorityQueueWithArrayTest
         var priorityQueueFloat = new PriorityQueueWithArray<float>(datasetSorting.LijstFloat8001.Length * 3);
         
         //Warmup
+        ConsoleStopwatch.Start("Warmup");
+        ConsoleStopwatch.Stop();
         priorityQueueFloat.Peek();
         
         foreach (var item in datasetSorting.LijstFloat8001)

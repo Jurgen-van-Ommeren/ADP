@@ -1,7 +1,7 @@
 ﻿namespace ADP.Operations.DoublyLinkedLists;
 
 public class DoubleLinkedList<T>
-    where T : IComparable
+    where T : IComparable<T>
 {
     private DoubleLinkedListNode<T> _firstNode;
     private DoubleLinkedListNode<T> _lastNode;

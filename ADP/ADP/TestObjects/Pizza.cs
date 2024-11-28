@@ -17,6 +17,6 @@ public class Pizza : IComparable<Pizza>
             return -1;
         }
 
-        return string.Compare(Name, comparingPizza.Name, StringComparison.Ordinal);
+        return 0;
     }
 }
