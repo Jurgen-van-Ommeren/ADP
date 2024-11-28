@@ -32,7 +32,7 @@ public class PriorityQueue<T> where T : IComparable<T>
     public T Peek()
     {
         if (_stack.HeadNode.Next == null)
-            return default;
+            throw new IndexOutOfRangeException();
 
         return _stack.HeadNode.Next.Node;
     }
