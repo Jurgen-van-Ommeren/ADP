@@ -11,7 +11,7 @@ public class DatasetSorting
     public int[] LijstOplopend2 { get; set; }
 
     [JsonPropertyName("lijst_float_8001")]
-    public double[] LijstFloat8001 { get; set; }
+    public float[] LijstFloat8001 { get; set; }
 
     [JsonPropertyName("lijst_gesorteerd_aflopend_3")]
     public int[] LijstGesorteerdAflopend3 { get; set; }

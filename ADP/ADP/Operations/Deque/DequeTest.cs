@@ -21,7 +21,7 @@ public class DequeTest
         
         deque = new Deque<string>();
         
-        sw.Start("Adding 2_000_000"); 
+        sw.Start("Adding 1_000_000"); 
         for (int i = 0; i < 1_000_000; i++)
         {
             deque.InsertLeft(i.ToString());
