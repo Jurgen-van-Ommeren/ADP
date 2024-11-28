@@ -2,7 +2,7 @@
 
 namespace ADP.Operations.DynamicArray;
 
-public class DynamicArray<T> : IEnumerable<T> where T: IComparable<T>
+public class DynamicArray<T> : IEnumerable<T> where T : IComparable<T>
 {
     private const int DefaultCapacity = 4;
 
@@ -42,27 +42,24 @@ public class DynamicArray<T> : IEnumerable<T> where T: IComparable<T>
         }
     }
 
-    public T? Get(int index)
+    public T Get(int index)
     {
         if (_size > index)
         {
             return _items[index];
         }
 
-        return default;
+        throw new IndexOutOfRangeException();
     }
 
     public void Set(int index, T item)
     {
-        if (_size > index)
+        if (_size < index)
         {
-            _items[index] = item;
-
-            if (item.CompareTo(_items[index]) == 0)
-            {
-                
-            }
+            throw new IndexOutOfRangeException();
         }
+
+        _items[index] = item;
     }
 
     public void Remove(int index)
@@ -81,7 +78,7 @@ public class DynamicArray<T> : IEnumerable<T> where T: IComparable<T>
             }
         }
     }
-    
+
     public void Remove(T item)
     {
         for (var i = 0; i < _size; i++)
@@ -93,7 +90,7 @@ public class DynamicArray<T> : IEnumerable<T> where T: IComparable<T>
             }
         }
     }
-    
+
     public bool Contains(T item)
     {
         for (var i = 0; i < _size; i++)
@@ -106,8 +103,8 @@ public class DynamicArray<T> : IEnumerable<T> where T: IComparable<T>
 
         return false;
     }
-    
-    public int? IndexOf(T item)
+
+    public int IndexOf(T item)
     {
         for (var i = 0; i < _size; i++)
         {
@@ -117,7 +114,7 @@ public class DynamicArray<T> : IEnumerable<T> where T: IComparable<T>
             }
         }
 
-        return null;
+        throw new IndexOutOfRangeException();
     }
 
     private void ResizeAndAdd(T item)
