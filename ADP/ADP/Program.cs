@@ -6,6 +6,9 @@ using ADP.Operations.PriorityQueue;
 
 var datasetSorting = JsonSerializer.Deserialize<DatasetSorting>(File.ReadAllText("Dataset/dataset_sorteren.json"));
 
-var dynamicArrayTests = new DynamicArrayTests();
+// var dynamicArrayTests = new DynamicArrayTests();
+//
+// dynamicArrayTests.Run(datasetSorting);
 
-dynamicArrayTests.Run(datasetSorting);
+new PriorityQueueWithArrayTest()
+    .Run(datasetSorting);

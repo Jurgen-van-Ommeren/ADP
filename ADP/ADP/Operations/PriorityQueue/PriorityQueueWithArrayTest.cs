@@ -8,8 +8,8 @@ public class PriorityQueueWithArrayTest
 {
     public void Run(DatasetSorting datasetSorting)
     {
-        // AddLijstFloat8001(datasetSorting);
-        // Peek(datasetSorting);
+        AddLijstFloat8001(datasetSorting);
+        Peek(datasetSorting);
         Poll(datasetSorting);
     }
 
@@ -88,27 +88,23 @@ public class PriorityQueueWithArrayTest
         var priorityQueue = new PriorityQueueWithArray<int>(3_000_000);
 
         //Warmup
+        ConsoleStopwatch.Start("Warmup");
+        ConsoleStopwatch.Stop();
         priorityQueue.Poll();
 
         for (int i = 0; i < 1_000_000; i++)
             priorityQueue.Add(i);
 
-        ConsoleStopwatch.Start("Poll 1_000_000");
         priorityQueue.Poll();
-        ConsoleStopwatch.Stop();
         
         for (int i = 1_000_000; i < 2_000_000; i++)
             priorityQueue.Add(i); 
         
-        ConsoleStopwatch.Start("Poll 2_000_000");
         priorityQueue.Poll();
-        ConsoleStopwatch.Stop();
         
         for (int i = 2_000_000; i < 3_000_000; i++)
             priorityQueue.Add(i); 
         
-        ConsoleStopwatch.Start("Poll 3_000_000");
         priorityQueue.Poll();
-        ConsoleStopwatch.Stop();
     }
 }
