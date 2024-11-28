@@ -1,33 +1,32 @@
-﻿namespace ADP.Operations.Stack;
+﻿using ADP.Dataset;
+using ADP.Testing;
+
+namespace ADP.Operations.Stack;
 
 public class StackTests
 {
-    public void TestStack()
+    public void Run(DatasetSorting datasetSorting)
     {
-        var stack = CreateTestStack();
+        var stack = new Stack<float>();
         
-        Console.WriteLine(stack.Pop());
-        Console.WriteLine(stack.Pop());
-        Console.WriteLine(stack.Pop());
+        //takes 27777 ticks
+        ConsoleStopwatch.Start("pushing LijstFloat8001");
+        foreach (var item in datasetSorting.LijstFloat8001)
+        {
+            stack.Push(item);
+        }
+        ConsoleStopwatch.Stop();
         
-        stack.Push("doei");
-        Console.WriteLine(stack.Peek());
-        Console.WriteLine(stack.Pop());
-        Console.WriteLine(stack.Pop());
-        Console.WriteLine(stack.Pop());
-        Console.WriteLine(stack.IsEmpty());
+        //takes 10187 ticks
+        // complexity = 1: because there are no loops, the time it takes to take the first item out of the list doesn't change when the list is longer.
+        ConsoleStopwatch.Start("popping LijstFloat8001");
+        foreach (var item in datasetSorting.LijstFloat8001)
+        {
+            stack.Pop();
+        }
+        ConsoleStopwatch.Stop();
+
     }
     
-    private Stack<string> CreateTestStack()
-    {
-        var stack = new Stack<string>();
-        
-        stack.Push("hallo");
-        stack.Push("Jo");
-        stack.Push("goedemiddag");
-        stack.Push("goedenavond");
-        stack.Push("goede nacht");
-
-        return stack;
-    }
+   
 }

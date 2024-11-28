@@ -64,18 +64,18 @@ public class DynamicArray<T> : IEnumerable<T> where T : IComparable<T>
 
     public void Remove(int index)
     {
+        if (_size <= index)
+            throw new IndexOutOfRangeException();
+
+        _size -= 1;
+
         if (_size > index)
         {
-            _size -= 1;
-
-            if (_size > index)
-            {
-                RemoveItemFromArray(index);
-            }
-            else
-            {
-                _items[_size] = default;
-            }
+            RemoveItemFromArray(index);
+        }
+        else
+        {
+            _items[_size] = default;
         }
     }
 
@@ -153,14 +153,12 @@ public class DynamicArray<T> : IEnumerable<T> where T : IComparable<T>
         {
             for (var i = 0; i < _size; i++)
             {
-                if (i < index)
+                if (i == index)
                 {
-                    newItems[i] = _items[i];
+                    i++;
                 }
-                else
-                {
-                    newItems[i] = _items[i + 1];
-                }
+
+                newItems[i] = _items[i];
             }
         }
 

@@ -9,9 +9,7 @@ public class DynamicArrayTests
     {
         var array = new DynamicArray<float>(8002);
         
-        //warmup
-        array.Add(1);
-        
+        //complexity:
         //takes 12883 ticks
         ConsoleStopwatch.Start("adding LijstFloat8001");
         
@@ -21,90 +19,60 @@ public class DynamicArrayTests
         }
         ConsoleStopwatch.Stop();
         
-        
-        //create new array
-        array = new DynamicArray<float>(24004);
-        
-        //warmup
-        array.Add(1);
-        
-        ConsoleStopwatch.Start("adding LijstFloat8001 1 times");
-        foreach (var item in datasetSorting.LijstFloat8001)
+        //complexity: 1, because the index directly references to the place where the data is stored.
+        //takes 3636 ticks
+        ConsoleStopwatch.Start("getting LijstFloat8001");
+        for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
         {
-            array.Add(item);
+            array.Get(i);
         }
         ConsoleStopwatch.Stop();
         
-        ConsoleStopwatch.Start("adding LijstFloat8001 2 times");
-        foreach (var item in datasetSorting.LijstFloat8001)
+        //complexity: 1, because the index directly references to the place where the data will be stored.
+        //takes 2761 ticks
+        ConsoleStopwatch.Start("setting LijstFloat8001");
+        for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
         {
-            array.Add(item);
+            array.Set(i, datasetSorting.LijstFloat8001[i]);
         }
         ConsoleStopwatch.Stop();
         
-        ConsoleStopwatch.Start("adding LijstFloat8001 3 times");
+        //complexity: O N, because there is 1 loop, the iterations it takes to find the item grows linear with the amount of items.
+        // takes 16986 ticks
+        ConsoleStopwatch.Start("contains LijstFloat8001");
         foreach (var item in datasetSorting.LijstFloat8001)
         {
-            array.Add(item);
+            array.Contains(item);
         }
         ConsoleStopwatch.Stop();
-     
         
+        //complexity: O N, because there is 1 loop, the iterations it takes to find the item grows linear with the amount of items.
+        // takes 17029 ticks
+        ConsoleStopwatch.Start("index of LijstFloat8001");
+        foreach (var item in datasetSorting.LijstFloat8001)
+        {
+            array.IndexOf(item);
+        }
+        ConsoleStopwatch.Stop();
         
-        // //takes 3636 ticks
-        // ConsoleStopwatch.Start("getting LijstFloat8001");
-        // for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
-        // {
-        //     array.Get(i);
-        // }
-        // ConsoleStopwatch.Stop();
-        //
-        // //takes 2761 ticks
-        // ConsoleStopwatch.Start("setting LijstFloat8001");
-        // for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
-        // {
-        //     array.Set(i, datasetSorting.LijstFloat8001[i]);
-        // }
-        // ConsoleStopwatch.Stop();
-        //
-        //
-        // // takes 16986 ticks
-        // ConsoleStopwatch.Start("contains LijstFloat8001");
-        // foreach (var item in datasetSorting.LijstFloat8001)
-        // {
-        //     array.Contains(item);
-        // }
-        // ConsoleStopwatch.Stop();
-        //
-        // // takes 3275
-        // ConsoleStopwatch.Start("index of LijstFloat8001");
-        // foreach (var item in datasetSorting.LijstFloat8001)
-        // {
-        //     array.IndexOf(item);
-        // }
-        // ConsoleStopwatch.Stop();
-        //
-        // // takes 2497663 ticks
-        // ConsoleStopwatch.Start("remove item from LijstFloat8001");
-        // foreach (var item in datasetSorting.LijstFloat8001)
-        // {
-        //     array.Remove(item);
-        // }
-        // ConsoleStopwatch.Stop();
-        //
-        // foreach (var item in datasetSorting.LijstFloat8001)
-        // {
-        //     array.Add(item);
-        // }
-        //
-        // //takes 3423737
-        // ConsoleStopwatch.Start("removing by index LijstFloat8001");
-        // for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
-        // {
-        //     array.Remove(i);
-        // }
-        // ConsoleStopwatch.Stop();
-        //
-        //
+        //complexity: O N^2, because there is 1 loop for comparing the items and 1 loop for swiping the array
+        // takes 4198643 ticks
+        ConsoleStopwatch.Start("remove item from LijstFloat8001");
+        foreach (var item in datasetSorting.LijstFloat8001)
+        {
+            array.Remove(item);
+        }
+        ConsoleStopwatch.Stop();
+
+        //complexity: O N, because there is 1 loop for swiping the array
+        //takes 1319261 ticks
+        ConsoleStopwatch.Start("removing by index LijstFloat8001");
+        for (var i = 0; i < datasetSorting.LijstFloat8001.Length; i++)
+        {
+            array.Remove(i);
+        }
+        ConsoleStopwatch.Stop();
+        
+
     }
 }

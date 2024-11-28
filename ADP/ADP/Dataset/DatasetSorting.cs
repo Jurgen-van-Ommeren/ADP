@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using ADP.TestObjects;
 
 namespace ADP.Dataset;
 
@@ -42,4 +43,6 @@ public class DatasetSorting
 
     [JsonPropertyName("lijst_willekeurig_3")]
     public int[] LijstWillekeurig3 { get; set; }
+    
+    public Pizza[] Pizzas { get; set; }
 }
