@@ -20,7 +20,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Sorting\BinarySearch\" />
       <Folder Include="Sorting\SelectionSort\" />
     </ItemGroup>
 
