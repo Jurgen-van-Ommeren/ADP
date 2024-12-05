@@ -4,6 +4,7 @@ using ADP.Operations.DoublyLinkedLists;
 using ADP.Operations.DynamicArray;
 using ADP.Operations.PriorityQueue;
 using ADP.Sorting.InsertionSort;
+using ADP.Sorting.QuickSort;
 using ADP.TestObjects;
 
 var datasetSorting = JsonSerializer.Deserialize<DatasetSorting>(File.ReadAllText("Dataset/dataset_sorteren.json"));
@@ -32,5 +33,8 @@ datasetSorting.Pizzas = PizzaGenerator.GenerateRandomPizzas(8001);
 // new DoubleLinkedListTest()
 //     .Run(datasetSorting);
 
-new InsertionSortTest()
+// new InsertionSortTest()
+//     .Run(datasetSorting);
+
+new QuickSortTest()
     .Run(datasetSorting);
