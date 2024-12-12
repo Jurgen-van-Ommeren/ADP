@@ -11,16 +11,15 @@ public class Stack<T> where T : IComparable<T>
         _stack = new SinglyLinkedList<T>();
     }
 
-    public void Push(T node)
+    public void Push(T data)
     {
         var newNode = new SinglyLinkedListNode<T>()
         {
-            Node = node,
+            Data = data,
             Next = _stack.HeadNode.Next
         };
 
         _stack.HeadNode.Next = newNode;
-
     }
 
     public T Pop()
@@ -28,11 +27,11 @@ public class Stack<T> where T : IComparable<T>
         if (_stack.HeadNode.Next == null)
             throw new IndexOutOfRangeException();
 
-        var node = _stack.HeadNode.Next.Node;
+        var data = _stack.HeadNode.Next.Data;
 
         _stack.HeadNode.Next = _stack.HeadNode.Next.Next;
         
-        return node;
+        return data;
     }
 
     public T Peek()
@@ -40,7 +39,7 @@ public class Stack<T> where T : IComparable<T>
         if (_stack.HeadNode.Next == null)
             throw new IndexOutOfRangeException();
 
-        return _stack.HeadNode.Next.Node;
+        return _stack.HeadNode.Next.Data;
     }
 
     public bool IsEmpty()

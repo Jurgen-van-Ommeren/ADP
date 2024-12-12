@@ -2,7 +2,7 @@
 
 namespace ADP.Operations.DynamicArray;
 
-public class DynamicArray<T> : IEnumerable<T> where T : IComparable<T>
+public class DynamicArray<T> where T : IComparable<T>
 {
     private const int DefaultCapacity = 4;
 
@@ -69,13 +69,13 @@ public class DynamicArray<T> : IEnumerable<T> where T : IComparable<T>
 
         _size -= 1;
 
-        if (_size > index)
+        if (_size == index)
         {
-            RemoveItemFromArray(index);
+            _items[_size] = default;
         }
         else
         {
-            _items[_size] = default;
+            RemoveItemFromArray(index);
         }
     }
 
@@ -122,19 +122,15 @@ public class DynamicArray<T> : IEnumerable<T> where T : IComparable<T>
 
     private void ResizeAndAdd(T item)
     {
-        int size = _size;
-        GrowArray(size + 1);
-        _size = size + 1;
-        _items[size] = item;
+        GrowArray(_size + 1);
+
+        _items[_size] = item;
+        _size++;
     }
 
     private void GrowArray(int newSize)
     {
         var newCapacity = _items.Length == 0 ? DefaultCapacity : 2 * _items.Length;
-
-        if (newCapacity < newSize)
-            newCapacity = newSize;
-
         var newItems = new T[newCapacity];
 
         if (_size > 0)
@@ -150,29 +146,9 @@ public class DynamicArray<T> : IEnumerable<T> where T : IComparable<T>
 
     private void RemoveItemFromArray(int index)
     {
-        var newItems = new T[_items.Length];
-
-        if (_size > 0)
+        for (var i = index; i < _size; i++)
         {
-            for (var i = 0; i < _size; i++)
-            {
-                newItems[i] = _items[i + 1];
-            }
+            _items[i] = _items[i + 1];
         }
-
-        _items = newItems;
-    }
-
-    public IEnumerator<T> GetEnumerator()
-    {
-        for (int i = 0; i < _size; i++)
-        {
-            yield return _items[i];
-        }
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
     }
 }

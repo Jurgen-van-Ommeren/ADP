@@ -4,5 +4,5 @@ public class SinglyLinkedListNode <T>
 {
     public SinglyLinkedListNode<T>? Next { get; set; }
     
-    public T Node { get; set; }
+    public T Data { get; set; }
 }

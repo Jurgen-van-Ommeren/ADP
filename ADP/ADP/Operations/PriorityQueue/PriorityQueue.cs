@@ -4,24 +4,24 @@ namespace ADP.Operations.PriorityQueue;
 
 public class PriorityQueue<T> where T : IComparable<T>
 {
-    private SinglyLinkedList<T> _stack;
+    private SinglyLinkedList<T> _head;
 
     public PriorityQueue()
     {
-        _stack = new SinglyLinkedList<T>();
+        _head = new SinglyLinkedList<T>();
     }
 
     public void Add(T node)
     {
         var newNode = new SinglyLinkedListNode<T>()
         {
-            Node = node,
-            Next = _stack.HeadNode.Next
+            Data = node,
+            Next = _head.HeadNode.Next
         };
 
-        if (_stack.HeadNode.Next == null)
+        if (_head.HeadNode.Next == null)
         {
-            _stack.HeadNode.Next = newNode;
+            _head.HeadNode.Next = newNode;
         }
         else
         {
@@ -31,20 +31,20 @@ public class PriorityQueue<T> where T : IComparable<T>
 
     public T Peek()
     {
-        if (_stack.HeadNode.Next == null)
+        if (_head.HeadNode.Next == null)
             throw new IndexOutOfRangeException();
 
-        return _stack.HeadNode.Next.Node;
+        return _head.HeadNode.Next.Data;
     }
 
     public T Poll()
     {
-        if (_stack.HeadNode.Next == null)
+        if (_head.HeadNode.Next == null)
             return default;
 
-        T node = _stack.HeadNode.Next.Node;
+        T node = _head.HeadNode.Next.Data;
 
-        _stack.HeadNode.Next = _stack.HeadNode.Next.Next;
+        _head.HeadNode.Next = _head.HeadNode.Next.Next;
 
         return node;
     }
@@ -53,15 +53,15 @@ public class PriorityQueue<T> where T : IComparable<T>
     {
         var newNode = new SinglyLinkedListNode<T>()
         {
-            Node = node,
+            Data = node,
             Next = null
         };
 
-        var compareNode = _stack.HeadNode.Next;
+        var compareNode = _head.HeadNode.Next;
 
         if (compareNode == null)
         {
-            _stack.HeadNode.Next = newNode;
+            _head.HeadNode.Next = newNode;
         }
         else
         {
@@ -69,26 +69,26 @@ public class PriorityQueue<T> where T : IComparable<T>
         }
     }
 
-    private void CompareNodes(SinglyLinkedListNode<T> node, SinglyLinkedListNode<T> compareNode, SinglyLinkedListNode<T> previousNode = null)
+    private void CompareNodes(SinglyLinkedListNode<T> newNode, SinglyLinkedListNode<T> compareNode, SinglyLinkedListNode<T> previousNode = null)
     {
         if (compareNode == null && previousNode != null)
         {
-            previousNode.Next = node;
+            previousNode.Next = newNode;
             
             return;
         }
         
-        if (node.Node.CompareTo(compareNode.Node) <= 0)
+        if (newNode.Data.CompareTo(compareNode.Data) <= 0)
         {
-            node.Next = compareNode;
+            newNode.Next = compareNode;
             
             if (previousNode != null)
-                previousNode.Next = node;
+                previousNode.Next = newNode;
             
         }
         else
         {
-            CompareNodes(node, compareNode.Next, compareNode);
+            CompareNodes(newNode, compareNode.Next, compareNode);
         }
     }
 }
