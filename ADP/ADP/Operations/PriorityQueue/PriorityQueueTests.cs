@@ -11,7 +11,7 @@ public class PriorityQueueTests
         var priorityQueue = new PriorityQueue<float>();
         var pizzaPriorityQueue = new PriorityQueue<Pizza>();
         
-        //complexity: O N, because on resizing it needs to copy the whole array to the new array
+        //complexity: O N, beceuse on recalculating priority it needs to loop through the list to calculate
         //takes 1764506 ticks
         ConsoleStopwatch.Start("adding LijstFloat8001");
         foreach (var item in datasetSorting.LijstFloat8001)

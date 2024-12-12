@@ -83,14 +83,16 @@ public class DynamicArray<T> where T : IComparable<T>
     {
         for (var i = 0; i < _size; i++)
         {
-            if (item.CompareTo(_items[i]) == 0)
-            {
+            if (item.CompareTo(_items[i]) != 0)
+                continue;
+
+            if (i != _size - 1)
                 RemoveItemFromArray(i);
-                _size--;
-                return;
-            }
+
+            _size--;
+            return;
         }
-        
+
         throw new IndexOutOfRangeException();
     }
 
@@ -146,7 +148,7 @@ public class DynamicArray<T> where T : IComparable<T>
 
     private void RemoveItemFromArray(int index)
     {
-        for (var i = index; i < _size; i++)
+        for (var i = index; i < _size - 1; i++)
         {
             _items[i] = _items[i + 1];
         }

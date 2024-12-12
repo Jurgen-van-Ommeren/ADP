@@ -15,18 +15,10 @@ public class PriorityQueue<T> where T : IComparable<T>
     {
         var newNode = new SinglyLinkedListNode<T>()
         {
-            Data = node,
-            Next = _head.HeadNode.Next
+            Data = node
         };
-
-        if (_head.HeadNode.Next == null)
-        {
-            _head.HeadNode.Next = newNode;
-        }
-        else
-        {
-            PlaceAtRightPriority(node);
-        }
+        
+        PlaceAtRightPriority(newNode);
     }
 
     public T Peek()
@@ -49,14 +41,8 @@ public class PriorityQueue<T> where T : IComparable<T>
         return node;
     }
 
-    private void PlaceAtRightPriority(T node)
+    private void PlaceAtRightPriority(SinglyLinkedListNode<T> newNode)
     {
-        var newNode = new SinglyLinkedListNode<T>()
-        {
-            Data = node,
-            Next = null
-        };
-
         var compareNode = _head.HeadNode.Next;
 
         if (compareNode == null)
@@ -74,17 +60,22 @@ public class PriorityQueue<T> where T : IComparable<T>
         if (compareNode == null && previousNode != null)
         {
             previousNode.Next = newNode;
-            
+
             return;
         }
-        
-        if (newNode.Data.CompareTo(compareNode.Data) <= 0)
+
+        if (newNode.Data.CompareTo(compareNode.Data) >= 0)
         {
             newNode.Next = compareNode;
-            
+
             if (previousNode != null)
+            {
                 previousNode.Next = newNode;
-            
+            }
+            else 
+            {
+                _head.HeadNode.Next = newNode;
+            }
         }
         else
         {
