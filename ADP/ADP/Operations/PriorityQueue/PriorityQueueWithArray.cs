@@ -4,12 +4,12 @@ namespace ADP.Operations.PriorityQueue;
 
 public class PriorityQueueWithArray<T> where T : IComparable<T>
 {
-    private T[] _items = new T[0];
+    private T[] _items;
     private int _size = 0;
 
     public PriorityQueueWithArray()
     {
-        
+        _items = new T[0];
     }
     
     public PriorityQueueWithArray(int capacity)
@@ -31,7 +31,7 @@ public class PriorityQueueWithArray<T> where T : IComparable<T>
             if (value.CompareTo(parent) < 0)
             {
                 _items[nodeIndex] = parent;
-                nodeIndex = parentIndex;
+                nodeIndex = parentIndex; 
             }
             else
             {
@@ -56,12 +56,8 @@ public class PriorityQueueWithArray<T> where T : IComparable<T>
     
     public T Poll()
     {
-        ConsoleStopwatch.Start($"Poll {_size}");
-        
         if (_size == 0)
         {
-            ConsoleStopwatch.Stop();
-            
             return default;
         }
 
@@ -74,8 +70,6 @@ public class PriorityQueueWithArray<T> where T : IComparable<T>
         
         _size--;
         
-        ConsoleStopwatch.Stop();
-
         return value;
     }
 
