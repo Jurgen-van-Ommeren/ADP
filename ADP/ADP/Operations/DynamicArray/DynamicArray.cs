@@ -124,13 +124,13 @@ public class DynamicArray<T> where T : IComparable<T>
 
     private void ResizeAndAdd(T item)
     {
-        GrowArray(_size + 1);
+        GrowArray();
 
         _items[_size] = item;
         _size++;
     }
 
-    private void GrowArray(int newSize)
+    private void GrowArray()
     {
         var newCapacity = _items.Length == 0 ? DefaultCapacity : 2 * _items.Length;
         var newItems = new T[newCapacity];
