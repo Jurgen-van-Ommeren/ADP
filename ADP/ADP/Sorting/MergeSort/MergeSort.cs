@@ -19,18 +19,18 @@ public class MergeSort<T> where T : IComparable<T>
         Merge(array, temp, left, middle + 1 , right);
     }
 
-    private static void Merge(T[] array, T[] temp, int left,int middle, int right)
+    private static void Merge(T[] array, T[] temp, int left, int middle, int right)
     {
         for (int i = left; i <= right; i++)
         {
             temp[i] = array[i];
         }
-        
+    
         var leftIndex = left;
-        var rightIndex = middle;
+        var rightIndex = middle + 1;
         var currentIndex = left;
 
-        while (leftIndex <= middle - 1 && rightIndex <= right)
+        while (leftIndex <= middle && rightIndex <= right)
         {
             if (Comparer<T>.Default.Compare(temp[leftIndex], temp[rightIndex]) <= 0)
             {
@@ -45,17 +45,10 @@ public class MergeSort<T> where T : IComparable<T>
             currentIndex++;
         }
 
-        while (leftIndex <= middle - 1)
+        while (leftIndex <= middle)
         {
             array[currentIndex] = temp[leftIndex];
             leftIndex++;
-            currentIndex++;
-        }
-
-        while (rightIndex <= right)
-        {
-            array[currentIndex] = temp[rightIndex];
-            rightIndex++;
             currentIndex++;
         }
     }
