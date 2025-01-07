@@ -19,4 +19,9 @@ public static class ConsoleStopwatch
         _stopwatch.Stop();
         System.Console.WriteLine($"{_title} took {_stopwatch.ElapsedTicks} ticks.");
     }
+
+    public static Stopwatch GetStopwatch()
+    {
+        return _stopwatch;
+    }
 }

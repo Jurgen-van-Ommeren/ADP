@@ -1,4 +1,5 @@
-﻿using ADP.Dataset;
+﻿using System.Diagnostics;
+using ADP.Dataset;
 using ADP.Sorting.InsertionSort;
 using ADP.Testing;
 
@@ -14,41 +15,55 @@ public class QuickSortTest
         ConsoleStopwatch.Start("Warmup");
         ConsoleStopwatch.Stop();
         quickSort.Sort(new[] {1});
-        
-        ConsoleStopwatch.Start("Quick sorting LijstWillekeurig10000"); 
-        quickSort.Sort(datasetSorting.LijstWillekeurig10000);
-        ConsoleStopwatch.Stop();
-        
-        var lijstAflopend10000 = datasetSorting.LijstOplopend10000
-            .Reverse()
-            .ToArray();
-        
-        //Todo
-        ConsoleStopwatch.Start("Insertion sorting lijstAflopend10000"); 
-        quickSort.Sort(lijstAflopend10000);
-        ConsoleStopwatch.Stop();
-        
-        var lijstAflopend100000 = lijstAflopend10000;
-        for (int i = 0; i < 10; i++)
-            lijstAflopend100000 = lijstAflopend100000.Concat(lijstAflopend10000).ToArray();
-        
-        //Todo
-        ConsoleStopwatch.Start("Insertion sorting lijstAflopend100000"); 
-        quickSort.Sort(lijstAflopend100000);
-        ConsoleStopwatch.Stop();
 
-        //Todo
-        ConsoleStopwatch.Start("Insertion sorting sorted lijstAflopend10000"); 
-        quickSort.Sort(lijstAflopend10000);
-        ConsoleStopwatch.Stop();
+        var list = new[] { 8, 6, 0, 7, 5, 3, 1 };
         
-        var lijstZelfdeGetallen = new int[10_000];
-        for (var i = 0; i < lijstZelfdeGetallen.Length; i++)
-            lijstZelfdeGetallen[i] = 5;
+        //Took 68.18 ticks
+        var totalTicks = 0f;
+        for (int i = 0; i < 100; i++)
+        {
+            var list2 = list
+                .ToArray();
         
-        //Todo 
-        ConsoleStopwatch.Start("Insertion sorting sorted lijstZelfdeGetallen"); 
-        quickSort.Sort(lijstZelfdeGetallen);
-        ConsoleStopwatch.Stop();
+            var sw = new Stopwatch();
+            sw.Start();
+            
+            quickSort.Sort(list2);
+            
+            sw.Stop();
+
+            totalTicks += sw.ElapsedTicks;
+        }
+        Console.WriteLine($"Average quick sorting {totalTicks / 100}ms");
+
+        //Took 33.53 ticks
+        //In average shorter because O(n log n)
+        totalTicks = 0f;
+        for (int i = 0; i < 100; i++)
+        {
+            var list10 = list
+                .Concat(list)
+                .Concat(list)
+                .Concat(list)
+                .Concat(list)
+                .Concat(list)
+                .Concat(list)
+                .Concat(list)
+                .Concat(list)
+                .Concat(list)
+                .ToArray();
+        
+            var sw = new Stopwatch();
+            sw.Start();
+            
+            quickSort.Sort(list10);
+            
+            sw.Stop();
+
+            totalTicks += sw.ElapsedTicks;
+        }
+        Console.WriteLine($"Average quick sorting x 10 {totalTicks / 100}ms");
+
+    
     }
 }
