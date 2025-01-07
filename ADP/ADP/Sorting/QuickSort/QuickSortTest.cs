@@ -34,7 +34,7 @@ public class QuickSortTest
 
             totalTicks += sw.ElapsedTicks;
         }
-        Console.WriteLine($"Average quick sorting {totalTicks / 100}ms");
+        Console.WriteLine($"Average quick sorting {totalTicks / 100} ticks");
 
         //Took 33.53 ticks
         //In average shorter because O(n log n)
@@ -62,7 +62,7 @@ public class QuickSortTest
 
             totalTicks += sw.ElapsedTicks;
         }
-        Console.WriteLine($"Average quick sorting x 10 {totalTicks / 100}ms");
+        Console.WriteLine($"Average quick sorting x 10 {totalTicks / 100} ticks");
 
     
     }

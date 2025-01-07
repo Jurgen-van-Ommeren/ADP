@@ -8,5 +8,8 @@ var datasetSorting = JsonSerializer.Deserialize<DatasetSorting>(File.ReadAllText
 
 datasetSorting.Pizzas = PizzaGenerator.GenerateRandomPizzas(8001);
 
-new QuickSortTest()
-    .Run(datasetSorting);
+// new QuickSortTest()
+//     .Run(datasetSorting);
+
+var list = new[] { 8, 6, 0, 7, 5, 3, 1 };
+new QuickSortTest().Run(datasetSorting);
