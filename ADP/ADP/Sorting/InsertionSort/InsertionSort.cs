@@ -4,7 +4,7 @@ public class InsertionSort<T> where T : IComparable<T>
 {
     public void Sort(T[] collection)
     {
-        for (int i = 1; i < collection.Length; i++) {
+        for (var i = 1; i < collection.Length; i++) {
             var toBeInserted = collection[i];
             
             var j = i;

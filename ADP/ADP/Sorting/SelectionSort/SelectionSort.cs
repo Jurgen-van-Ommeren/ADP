@@ -6,16 +6,13 @@ public class SelectionSort<T>
     public static void Sort(T[] array)
     {
         var arrayLength = array.Length;
-        var loopcount = 0;
 
         for (var indexToValidate = 0; indexToValidate < arrayLength - 1; indexToValidate++)
         {
             var minIndex = indexToValidate;
-            loopcount++;
 
             for (var indexToValidateAgainst = indexToValidate + 1; indexToValidateAgainst < arrayLength; indexToValidateAgainst++)
             {
-                loopcount++;
                 if (array[indexToValidateAgainst].CompareTo(array[minIndex]) < 0)
                 {
                     minIndex = indexToValidateAgainst;
@@ -24,7 +21,5 @@ public class SelectionSort<T>
             
             (array[minIndex], array[indexToValidate]) = (array[indexToValidate], array[minIndex]);
         }
-        
-        Console.WriteLine($"loopcount = {loopcount}");
     }
 }
