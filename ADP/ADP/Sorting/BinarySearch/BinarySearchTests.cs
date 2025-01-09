@@ -26,6 +26,7 @@ public class BinarySearchTests
         var notExistingItemArray = BinarySearch<int>.Search(array, 20);
     }
 
+    //complexity: average O(logn) best case (when searched item is in the middle or at the front or the start) O(1)
     public void Run(DatasetSorting datasetSorting)
     {
         ConsoleStopwatch.Start("item op index 2 LijstOplopend10000");
@@ -33,7 +34,7 @@ public class BinarySearchTests
         ConsoleStopwatch.Stop();
         
         ConsoleStopwatch.Start("item op index 5 LijstWillekeurig10000");
-        BinarySearch<int>.Search(datasetSorting.LijstWillekeurig10000, datasetSorting.LijstWillekeurig10000[2]);
+        BinarySearch<int>.Search(datasetSorting.LijstWillekeurig10000, datasetSorting.LijstWillekeurig10000[5]);
         ConsoleStopwatch.Stop();
     }
 }
