@@ -1,4 +1,5 @@
-﻿using ADP.Graph.GraphParts;
+﻿using ADP.Graph.Dijkstra;
+using ADP.Graph.GraphParts;
 
 namespace ADP.Graph;
 
@@ -19,6 +20,11 @@ public class Graph
         }
     }
 
+    public Dictionary<string, Vertex> GetVertexMap()
+    {
+        return _vertexMap;
+    }
+    
     public void AddEdge(string sourceName, string destinationName, double cost = 1.0)
     {
         if (!_vertexMap.ContainsKey(sourceName))
