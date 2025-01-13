@@ -1,7 +1,4 @@
-﻿using ADP.Operations.DoublyLinkedLists;
-using ADP.Operations.SinglyLinkedList;
-
-namespace ADP.Operations.HashTable;
+﻿namespace ADP.Operations.HashTable;
 
 public class HashTable<T>
 {
