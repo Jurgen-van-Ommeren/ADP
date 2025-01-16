@@ -7,7 +7,7 @@ public class HashTableTests
 {
     public void Run(DatasetHashing datasetHashing)
     {
-        var hashTable = new HashTable<int[]>(datasetHashing.Hashtabelsleutelswaardes.Count);
+        var hashTable = new HashTable<int[]>();
         
 
         foreach (var datasetHashingHashtabelsleutelswaarde in datasetHashing.Hashtabelsleutelswaardes)

@@ -8,15 +8,20 @@
 //Geen Quadratic Probing
 public class HashTable<T>
 {
-    private readonly HashTableChain<T>[] _table;
-
-    public HashTable(int capacity)
-    {
-        _table = new HashTableChain<T>[capacity];
-    }
+    private HashTableChain<T>[] _table = new HashTableChain<T>[0];
+    private int _size;
+    private double _loadFactorThreshold; 
 
     public void Insert(string key, T value) //Todo overwrite if exists?
     {
+        var existing = Get(key);
+        if (existing != null)
+        {
+            throw new Exception();
+        }
+
+        EnsureSize();
+        
         var index = GetIndex(key);
 
         var chain = _table[index];
@@ -34,6 +39,8 @@ public class HashTable<T>
                 Data = value
             };
 
+            _size++;
+
             return;
         }
             
@@ -49,6 +56,8 @@ public class HashTable<T>
             Key = key,
             Data = value
         };
+
+        _size++;
     }
 
     public T Get(string key)
@@ -136,23 +145,20 @@ public class HashTable<T>
         return total % _table.Length;
     }
  
-    private static readonly int[] Primes = { 3, 7, 11, 17, 23, 29, 37, 47, 59, 71, 89, 107, 131, 163, 197, 239, 293, 353, 431, 521, 631, 761, 919, 1103, 1327, 1597, 1931, 2333, 2801, 3371, 4049, 4861, 5839, 7013, 8419, 10103, 12143, 14591, 17519, 21023, 25229, 30293, 36353, 43627, 52361, 62851, 75431, 90523, 108631, 130363, 156437, 187751, 225307, 270371, 324449, 389357, 467237, 560689, 672827, 807403, 968897, 1162687, 1395263, 1674319, 2009191, 2411033, 2893249, 3471899, 4166287, 4999559, 5999471, 7199369 };
-    
-    private int GetPrime(int min)
+    private void EnsureSize()
     {
-        foreach (var prime in Primes)
+        if (_size < _loadFactorThreshold * _table.Length)
         {
-            if (prime >= min)
-            {
-                return prime;
-            }
+            return;
+        }
+        
+        var newTable = new HashTableChain<T>[_table.Length * 2 + 1];
+        
+        for (var i = 0; i < _table.Length; i++)
+        {
+            newTable[i] = _table[i];
         }
 
-        throw new ArgumentOutOfRangeException();
-    }
-
-    private void Resize()
-    {
-        
+        _table = newTable;
     }
 }
