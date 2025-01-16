@@ -4,9 +4,8 @@ namespace ADP.Graph;
 
 public class GraphTests
 {
-    public void RunFunctionalTests(DatasetGraphs datasetGraphs)
+    public void Run(DatasetGraphs datasetGraphs)
     {
-
         CheckEdgeList(datasetGraphs);
         
         CheckAdjacencyList(datasetGraphs);

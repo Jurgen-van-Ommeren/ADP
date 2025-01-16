@@ -5,7 +5,17 @@ public class HashTable<T>
 {
     private HashTableChain<T>[] _table = Array.Empty<HashTableChain<T>>();
     private int _size;
-    private double _loadFactorThreshold = 0.75; 
+    private double _loadFactorThreshold = 0.75;
+
+    public HashTable()
+    {
+        
+    }
+    
+    public HashTable(int capacity)
+    {
+        _table = new HashTableChain<T>[capacity];
+    }
 
     public void Insert(string key, T value)
     {
@@ -17,25 +27,32 @@ public class HashTable<T>
 
         EnsureSize();
         
-        var index = GetIndex(key);
-
-        var chain = _table[index];
-        if (chain == null)
-        {
-            chain = new HashTableChain<T>();
-            _table[index] = chain;
-        }
-
-        if (chain.Next == null)
-        {
-            chain.Next = new HashTableChainNode<T>()
+        InsertInternal(
+            _table,
+            new HashTableChainNode<T>()
             {
                 Key = key,
                 Data = value
-            };
+            }
+        );
 
-            _size++;
+        _size++;
+    }
 
+    private void InsertInternal(HashTableChain<T>[] table, HashTableChainNode<T> node)
+    {
+        var index = GetIndex(node.Key, table.Length);
+
+        var chain = table[index];
+        if (chain == null)
+        {
+            chain = new HashTableChain<T>();
+            table[index] = chain;
+        }
+        
+        if (chain.Next == null)
+        {
+            chain.Next = node;
             return;
         }
             
@@ -45,19 +62,18 @@ public class HashTable<T>
         {
             lastNode = lastNode.Next;
         }
-        
-        lastNode.Next = new HashTableChainNode<T>()
-        {
-            Key = key,
-            Data = value
-        };
 
-        _size++;
+        lastNode.Next = node;
     }
 
     public T Get(string key)
     {
-        var index = GetIndex(key);
+        if (_size == 0)
+        {
+            return default;
+        }
+        
+        var index = GetIndex(key, _table.Length);
         
         var chain = _table[index];
         if (chain == null)
@@ -80,7 +96,12 @@ public class HashTable<T>
 
     public void Delete(string key)
     {
-        var index = GetIndex(key);
+        if (_size == 0)
+        {
+            return;
+        }
+        
+        var index = GetIndex(key, _table.Length);
         
         var chain = _table[index];
         if (chain == null)
@@ -111,7 +132,12 @@ public class HashTable<T>
 
     public void Update(string key, T value)
     {
-        var index = GetIndex(key); 
+        if (_size == 0)
+        {
+            return;
+        }
+        
+        var index = GetIndex(key, _table.Length); 
         
         var chain = _table[index];
         if (chain == null)
@@ -131,7 +157,7 @@ public class HashTable<T>
         }
     }
     
-    private int GetIndex(string key)
+    private int GetIndex(string key, int tableSize)
     {
         var total = 0;
         
@@ -140,7 +166,7 @@ public class HashTable<T>
             total += character;
         }
         
-        return total % _table.Length;
+        return total % tableSize;
     }
  
     private void EnsureSize()
@@ -154,7 +180,26 @@ public class HashTable<T>
         
         for (var i = 0; i < _table.Length; i++)
         {
-            newTable[i] = _table[i];
+            var chain = _table[i];
+            if (chain == null)
+            {
+                continue;
+            }
+            
+            var currentNode = chain.Next;
+            while (currentNode != null)
+            {
+                var insertingNode = currentNode;
+                
+                InsertInternal(
+                    newTable,
+                    insertingNode
+                );
+                
+                currentNode = currentNode.Next;
+                
+                insertingNode.Next = null;
+            }
         }
 
         _table = newTable;

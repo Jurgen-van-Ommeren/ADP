@@ -5,7 +5,7 @@ namespace ADP.Sorting.SelectionSort;
 
 public class SelectionSortTests
 {
-    public void RunTests(DatasetSorting datasetSorting)
+    public void Run(DatasetSorting datasetSorting)
     {
         ConsoleStopwatch.Start("SelectionSort Unsorted LijstWillekeurig10000");
         
