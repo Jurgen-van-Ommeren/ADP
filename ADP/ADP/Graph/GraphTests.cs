@@ -20,6 +20,8 @@ public class GraphTests
         CheckWeightedAdjacencyMatrix(datasetGraphs);
 
         CheckDeleteEdgeFunction(datasetGraphs);
+
+        CheckDeleteVertexFunction(datasetGraphs);
     }
 
     private void CheckDeleteEdgeFunction(DatasetGraphs datasetGraphs)
@@ -30,6 +32,14 @@ public class GraphTests
         var edge = new Edge(new Vertex("test"), 1);
         
         graph.RemoveEdge("1", edge);
+    }
+    
+    private void CheckDeleteVertexFunction(DatasetGraphs datasetGraphs)
+    {
+        var graph = new Graph();
+        graph.PopulateFromAdjacencyList(datasetGraphs.verbindingslijst);
+        
+        graph.RemoveVertex("1");
     }
 
     private void CheckEdgeList(DatasetGraphs datasetGraphs)

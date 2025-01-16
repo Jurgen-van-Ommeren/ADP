@@ -19,6 +19,24 @@ public class Graph
             _vertexMap[name] = new Vertex(name);
         }
     }
+
+    public void RemoveVertex(string name)
+    {
+        if (!_vertexMap.TryGetValue(name, out var vertex))
+        {
+            return;
+        }
+
+        _vertexMap.Remove(vertex.Name);
+        
+        foreach (var vertexMapValue in _vertexMap.Values)
+        {
+            foreach (var edge in vertexMapValue.AdjacentEdges.Where(x => x.Destination.Name == vertex.Name).ToList())
+            {
+                vertexMapValue.AdjacentEdges.Remove(edge);
+            }
+        }
+    }
     
     public Dictionary<string, Vertex> GetVertexMap()
     {
