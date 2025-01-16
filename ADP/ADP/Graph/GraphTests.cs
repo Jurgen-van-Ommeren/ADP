@@ -1,4 +1,5 @@
 ﻿using ADP.Dataset;
+using ADP.Graph.GraphParts;
 
 namespace ADP.Graph;
 
@@ -15,8 +16,20 @@ public class GraphTests
         CheckWeightedEdgeList(datasetGraphs);
         
         CheckWeightedAdjacencyList(datasetGraphs);
-        
+
         CheckWeightedAdjacencyMatrix(datasetGraphs);
+
+        CheckDeleteEdgeFunction(datasetGraphs);
+    }
+
+    private void CheckDeleteEdgeFunction(DatasetGraphs datasetGraphs)
+    {
+        var graph = new Graph();
+        graph.PopulateFromAdjacencyList(datasetGraphs.verbindingslijst);
+
+        var edge = new Edge(new Vertex("test"), 1);
+        
+        graph.RemoveEdge("1", edge);
     }
 
     private void CheckEdgeList(DatasetGraphs datasetGraphs)
@@ -158,12 +171,12 @@ public class GraphTests
             Console.WriteLine("Fout bij verbindingsmatrix_gewogen");
         }
         
-        if (vertex1.AdjacentEdges[0].Destination.Name != "55")
+        if (vertex1.AdjacentEdges[0].Destination.Name != "2")
         {
             Console.WriteLine("Fout bij verbindingsmatrix_gewogen");
         }
         
-        if (vertex1.AdjacentEdges[0].Cost!= 55d)
+        if (vertex1.AdjacentEdges[0].Cost!= 50d)
         {
             Console.WriteLine("Fout bij verbindingsmatrix_gewogen");
         }

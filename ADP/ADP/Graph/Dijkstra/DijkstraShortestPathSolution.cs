@@ -13,28 +13,24 @@ public static class DijkstraShortestPathSolution
 
         var distances = new Dictionary<string, double>();
         var predecessors = new Dictionary<string, string>();
-        var priorityQueue = new HashSet<string>();
+        var queue = new HashSet<string>();
 
         foreach (var vertex in graph.GetVertexMap().Keys)
         {
             distances[vertex] = double.PositiveInfinity;
             predecessors[vertex] = null;
+            queue.Add(vertex);
         }
         distances[startVertexName] = 0;
-
-        foreach (var vertex in graph.GetVertexMap().Keys)
-        {
-            priorityQueue.Add(vertex);
-        }
-
-        while (priorityQueue.Count > 0)
+        
+        while (queue.Count > 0)
         {
             string currentVertexName = null;
             var smallestDistance = double.PositiveInfinity;
 
-            foreach (var vertex in priorityQueue)
+            foreach (var vertex in queue)
             {
-                if (!(distances[vertex] < smallestDistance)) 
+                if (distances[vertex] >= smallestDistance) 
                     continue;
                 
                 smallestDistance = distances[vertex];
@@ -43,7 +39,7 @@ public static class DijkstraShortestPathSolution
 
             if (currentVertexName == null) break;
 
-            priorityQueue.Remove(currentVertexName);
+            queue.Remove(currentVertexName);
 
             var currentVertex = graph.GetVertexMap()[currentVertexName];
             

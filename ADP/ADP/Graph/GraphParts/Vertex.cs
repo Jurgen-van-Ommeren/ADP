@@ -15,4 +15,11 @@ public class Vertex
     {
         AdjacentEdges.Add(new Edge(destination, cost));
     }
+    
+    public void RemoveEdge(Edge edge)
+    {
+        AdjacentEdges.Remove(edge);
+    }
+    
+    //TODO remove function
 }

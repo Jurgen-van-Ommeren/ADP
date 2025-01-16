@@ -43,6 +43,18 @@ public class Graph
         source.AddEdge(destination, cost);
     }
     
+    public void RemoveEdge(string sourceName, Edge edge)
+    {
+        if (!_vertexMap.ContainsKey(sourceName))
+        {
+            return;
+        }
+        
+        var source = _vertexMap[sourceName];
+
+        source.RemoveEdge(edge);
+    }
+    
     public void PopulateFromEdgeList(int[][] edgeList)
     {
         foreach (var edge in edgeList)
