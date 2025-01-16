@@ -20,6 +20,4 @@ public class Vertex
     {
         AdjacentEdges.Remove(edge);
     }
-    
-    //TODO remove function
 }

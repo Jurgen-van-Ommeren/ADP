@@ -19,7 +19,7 @@ public class Graph
             _vertexMap[name] = new Vertex(name);
         }
     }
-
+    
     public Dictionary<string, Vertex> GetVertexMap()
     {
         return _vertexMap;
@@ -45,12 +45,10 @@ public class Graph
     
     public void RemoveEdge(string sourceName, Edge edge)
     {
-        if (!_vertexMap.ContainsKey(sourceName))
+        if (!_vertexMap.TryGetValue(sourceName, out var source))
         {
             return;
         }
-        
-        var source = _vertexMap[sourceName];
 
         source.RemoveEdge(edge);
     }

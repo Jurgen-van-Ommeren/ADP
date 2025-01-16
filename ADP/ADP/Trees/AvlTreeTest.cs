@@ -37,6 +37,7 @@ public class AvlTreeTest
             avlTree.Find(i);
             sw.Stop();
             total += sw.ElapsedTicks;
+            sw.Reset();
         }
 
         Console.WriteLine($"average time with 1000 items = {total / 1000} ticks");
@@ -68,6 +69,7 @@ public class AvlTreeTest
             avlTree.Find(i);
             sw.Stop();
             total += sw.ElapsedTicks;
+            sw.Reset();
         }
 
         Console.WriteLine($"average time with 10000 items = {total / 10000} ticks");

@@ -10,15 +10,15 @@ using ADP.Operations.PriorityQueue;
 using ADP.Operations.Stack;
 using ADP.Sorting.BinarySearch;
 using ADP.Sorting.InsertionSort;
-using ADP.Sorting.MergeSort;using ADP.Sorting.QuickSort;
+using ADP.Sorting.MergeSort;
+using ADP.Sorting.QuickSort;
 using ADP.Sorting.SelectionSort;
-using ADP.Testing;
 using ADP.TestObjects;
 using ADP.Trees;
 
 var datasetSorting = JsonSerializer.Deserialize<DatasetSorting>(File.ReadAllText("Dataset/dataset_sorteren.json"));
-var datasetGraphs = JsonSerializer.Deserialize<DatasetGraphs>(File.ReadAllText("Dataset/dataset_grafen.json"));
 var datasetHashing = JsonSerializer.Deserialize<DatasetHashing>(File.ReadAllText("Dataset/dataset_hashing.json"));
+var datasetGraphs = JsonSerializer.Deserialize<DatasetGraphs>(File.ReadAllText("Dataset/dataset_grafen.json"));
 
 datasetSorting.Pizzas = PizzaGenerator.GenerateRandomPizzas(8001);
 
