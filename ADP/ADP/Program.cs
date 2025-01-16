@@ -22,7 +22,7 @@ datasetSorting.Pizzas = PizzaGenerator.GenerateRandomPizzas(8001);
 //
 // dijkstraTest.Run(datasetGraphs);
 
-new AvlTreeTest().Run();
+// new AvlTreeTest().Run();
 
 new HashTableTests()
     .Run(datasetHashing);

@@ -9,6 +9,13 @@ public class HashTableTests
     {
         var hashTable = new HashTable<int[]>();
         
+        
+        //Todo: Be ready to explain the differences between your implementation and other ones we covered during the lesson.
+//Todo: Use prime number?
+
+//Middels Separate Chaining
+//Geen Linear Probing
+//Geen Quadratic Probing
 
         foreach (var datasetHashingHashtabelsleutelswaarde in datasetHashing.Hashtabelsleutelswaardes)
         {

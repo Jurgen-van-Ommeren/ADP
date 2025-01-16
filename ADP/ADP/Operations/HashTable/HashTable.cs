@@ -1,18 +1,13 @@
 ﻿namespace ADP.Operations.HashTable;
 
-//Todo: Be ready to explain the differences between your implementation and other ones we covered during the lesson.
-//Todo: Use prime number?
 
-//Middels Separate Chaining
-//Geen Linear Probing
-//Geen Quadratic Probing
 public class HashTable<T>
 {
-    private HashTableChain<T>[] _table = new HashTableChain<T>[0];
+    private HashTableChain<T>[] _table = Array.Empty<HashTableChain<T>>();
     private int _size;
-    private double _loadFactorThreshold; 
+    private double _loadFactorThreshold = 0.75; 
 
-    public void Insert(string key, T value) //Todo overwrite if exists?
+    public void Insert(string key, T value)
     {
         var existing = Get(key);
         if (existing != null)
@@ -91,7 +86,10 @@ public class HashTable<T>
         if (chain == null)
             return;
 
-        if (chain.Next.Key.Equals(key))
+        if (
+            chain.Next.Next == null &&
+            chain.Next.Key.Equals(key) 
+            ) 
         {
             _table[index] = null;
             return;
