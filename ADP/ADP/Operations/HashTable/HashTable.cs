@@ -2,15 +2,26 @@
 
 public class HashTable<T>
 {
-    private readonly HashTableChain<T>[] _table;
+    private HashTableChain<T>[] _table;
+    
+    private readonly double _loadFactorThreshold = 0.75;
+    private int _size = 0;
 
     public HashTable(int capacity)
     {
         _table = new HashTableChain<T>[capacity];
     }
 
-    public void Insert(string key, T value) //Todo overwrite if exists?
+    public void Insert(string key, T value)
     {
+        var existing = Get(key);
+        if (existing != null)
+        {
+            throw new Exception();
+        }
+        
+        EnsureSize();
+        
         var index = GetIndex(key);
 
         var chain = _table[index];
@@ -28,6 +39,8 @@ public class HashTable<T>
                 Data = value
             };
 
+            _size++;
+            
             return;
         }
             
@@ -43,6 +56,8 @@ public class HashTable<T>
             Key = key,
             Data = value
         };
+        
+        _size++;
     }
 
     public T Get(string key)
@@ -88,5 +103,22 @@ public class HashTable<T>
         }
         
         return total % _table.Length;
+    }
+
+    private void EnsureSize()
+    {
+        if (_size < _loadFactorThreshold * _table.Length)
+        {
+            return;
+        }
+        
+        var newTable = new HashTableChain<T>[_table.Length * 2]; 
+        
+        for (var i = 0; i < _table.Length; i++)
+        {
+            newTable[i] = _table[i];
+        }
+
+        _table = newTable;
     }
 }
