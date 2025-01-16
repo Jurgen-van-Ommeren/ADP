@@ -15,7 +15,6 @@ using ADP.Sorting.SelectionSort;
 using ADP.Testing;
 using ADP.TestObjects;
 using ADP.Trees;
-using DijkstraShortestPathTests = ADP.Operations.DijkstraShortestPath.DijkstraShortestPathTests;
 
 var datasetSorting = JsonSerializer.Deserialize<DatasetSorting>(File.ReadAllText("Dataset/dataset_sorteren.json"));
 var datasetGraphs = JsonSerializer.Deserialize<DatasetGraphs>(File.ReadAllText("Dataset/dataset_grafen.json"));
@@ -97,7 +96,7 @@ Console.WriteLine();
 
 Console.WriteLine("Start DijkstraShortestPathTests");
 new DijkstraShortestPathTests()
-    .Run();
+    .Run(datasetGraphs);
 Console.WriteLine();
 Console.WriteLine();
 
