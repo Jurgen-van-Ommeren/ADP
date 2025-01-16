@@ -6,6 +6,7 @@ using ADP.Operations.Deque;
 using ADP.Operations.HashTable;
 using ADP.Sorting.MergeSort;using ADP.Sorting.QuickSort;
 using ADP.TestObjects;
+using ADP.Trees;
 
 var datasetSorting = JsonSerializer.Deserialize<DatasetSorting>(File.ReadAllText("Dataset/dataset_sorteren.json"));
 var datasetGraphs = JsonSerializer.Deserialize<DatasetGraphs>(File.ReadAllText("Dataset/dataset_grafen.json"));
@@ -17,9 +18,11 @@ datasetSorting.Pizzas = PizzaGenerator.GenerateRandomPizzas(8001);
 //
 // graphTest.RunFunctionalTests(datasetGraphs);
 
-var dijkstraTest = new DijkstraShortestPathTests();
+// var dijkstraTest = new DijkstraShortestPathTests();
+//
+// dijkstraTest.Run(datasetGraphs);
 
-dijkstraTest.Run(datasetGraphs);
+new AvlTreeTest().Run();
 
 new HashTableTests()
     .Run(datasetHashing);
